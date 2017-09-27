@@ -101,7 +101,7 @@ var  chosenArtist = [5];
  //-----------------Functions----------------------
 //get random artist from an array
 export function randomArtist(){
-	var  artists = ["U2", "Coldplay", "Queen", "Led zeppelin", "Arctic monkeys", "Red Hot Chili Peppers", "Britney Spears", "Madonna","Michael Jackson", "Sia", "The Doors", "Metallica","Shakira","Katy Perry","Taylor swift", "Adele","Aerosmith","Guns N Roses","The Beatles","Elvis Presley "];
+	var  artists = ["U2", "Coldplay", "Queen", "Led Zeppelin", "Arctic monkeys", "Red Hot Chili Peppers", "Britney Spears", "Madonna","Michael Jackson", "Sia", "The Doors", "Metallica","Shakira","Katy Perry","Taylor swift", "Adele","Aerosmith","Guns N Roses","The Beatles","Elvis Presley "];
 	var length=artists.length;
 	var i;
 	for (i=0;i<5;i++){
@@ -134,12 +134,23 @@ function onClickStart(){
 
 
 function readData(numOfRound){
+	var count=0;
+	var i=0;
+	var answer=[3];
 if (numOfRound<6){
 	var urlApi=getUrl(numOfRound);
 	return fetch(urlApi)
   	.then(function(response) { return response.json(); })
   	.then(function(data) {
-  		var answer=[data.results[0].collectionName, data.results[1].collectionName, data.results[2].collectionName];
+  		while (count!==3){
+  			var valid=data.results[i].collectionName.includes(chosenArtist[numOfRound-1]);
+  			valid=valid || data.results[i].collectionName.includes("Greatest Hits");
+  		if (!valid){
+  			answer[count]=data.results[i].collectionName;
+  			count+=1;
+  		}
+  		i+=1;
+  	}
 		ReactDOM.render(<Ans numOfRound={numOfRound}   ans={answer} />, document.getElementById('root'));//
 		numOfRound+=1;
 		return;  });
