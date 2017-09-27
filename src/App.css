@@ -1,0 +1,90 @@
+/*----------General------------------*/
+body{
+   font-family: 'Lato', sans-serif; 
+   background-color: #ffe6ff;  
+}
+
+#startBox {
+    background-color: white;
+    height: 380px;
+    margin-top: 150px;
+    border-radius: 25px;
+    width: 600px;
+    margin-left: 300px;
+    border:solid;
+}
+
+#startBox h1{
+    font-size: 60px;
+    text-align: center;
+    color: black;
+    padding-left: 20px;
+}
+
+#startBox h2{
+    margin:30px;
+    text-align: left;
+    color: black;
+    font-weight:normal; 
+    text-decoration: underline;
+}
+
+#startBox h3{
+    margin:30px;
+    text-align: left;
+    color: black;
+    font-weight:normal; 
+}
+
+#startBox p{
+      text-align: left;
+      padding-left: 100px;
+      line-height: 160%;
+}
+
+#answerButton{
+    font-family: 'Lato', sans-serif; 
+    border-radius: 25px;
+    background-color:white;
+    margin-left: 50px;
+    width: 100px;
+    line-height: 160%;
+}
+
+
+#inputText{
+    border: 1px solid black; 
+    background-color: lightgrey;
+    width: 250px;
+    padding-top: 10px;
+    font-size: 15px;
+    margin-left: 50px;
+}
+
+#Endh3 {
+    font-weight:normal;
+    font-size: 30px; 
+    margin-top: 30px;
+    line-height: 160%;
+    padding-left: 120px;
+}
+
+.startBoxbutton{
+    font-family: 'Lato', sans-serif; 
+    border-radius: 25px;
+    background-color:white  ;
+    height: 60px;
+    width: 300px;
+    margin-top: 40px;
+    margin-left: 150px;
+}
+
+.ans{
+        border-style: solid;
+        border-width: 1px;
+        margin-bottom: 10px;
+        width: 60%;
+        margin-top:20px;
+        margin-left: 50px;
+
+}
