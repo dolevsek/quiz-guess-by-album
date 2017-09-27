@@ -1,11 +1,5 @@
 # quiz-guess-by-album
 
-This is a ReactJS project.
-It a game - you need to guess the artist name by it's albums.
-Was tested on localHost
-
-
-
-
-
-The node_modules files are missing
+This is my first ReactJS project.
+It's a quiz where the participante should guess the artist name by it's albums.
+The game has 5 round and in each round the participante gets 3 attempts.
