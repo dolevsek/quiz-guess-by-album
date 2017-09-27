@@ -65,23 +65,30 @@ class Ans extends React.Component {
 
   render() {
   	if (this.props.numOfRound < 6){
+  		var ans1 = <p className="ans"> {this.props.ans[1]}</p>;
+  		var ans2 = 
+	  	<div>
+			{ans1}
+	  		<p className="ans"> {this.props.ans[2]}</p>;
+	  	</div>
 	    return (
 	    	<div id="startBox">
-				<h2>round {this.props.numOfRound}:</h2>
+				<h2>Round {this.props.numOfRound}:</h2> 
 				<p className="ans"> {this.props.ans[0]}</p>
-				<p className="ans"> {this.props.ans[1]}</p>
-				<p className="ans"> {this.props.ans[2]}</p>
+				{this.state.try===1 && ans1 }
+                {this.state.try===2 && ans2  }
 				<h3> Please enter our answer:</h3>
 				<input type="text" id="inputText" value = {this.state.valueAttr} onChange={this.handleChange}  />
 				<button id="answerButton" onClick={this.handleClick} >Send</button>
+				<h2 >score is : {this.state.score}</h2>
 			</div>
 	    );
-	}
+	}//
 	else if (this.props.numOfRound===6) {
   		return(	    	
   			<div id="startBox">	
   			<h1>Game Over!</h1>
-  			<h3 id="Endh3"> score is : {this.state.score}</h3>
+  			<h3 id="Endh3">Final score is : {this.state.score}</h3>
 			<button className="startBoxbutton" onClick={onClickStart}>Click to start </button>
 
   			</div>);//
