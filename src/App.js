@@ -64,7 +64,7 @@ class Ans extends React.Component {
 }
 
   render() {
-  	 if (this.props.numOfRound < 6){
+  	if (this.props.numOfRound < 6){
 	    return (
 	    	<div id="startBox">
 				<h2>round {this.props.numOfRound}:</h2>
@@ -89,8 +89,6 @@ class Ans extends React.Component {
   	}
   }
 }
-
-
 
 
 //--------------------Components-----------------
@@ -175,27 +173,7 @@ function updateScore(numOfTry){
 			return -1;
 	}
 }
-/*
-function onClickTry(){
-	var userAns= document.getElementById('ans').value;
-	if (userAns.toUpperCase()===chosenArtist[numOfRound-1].toUpperCase())
-	{
-		updateScore();
-		startRound();
-	}
-	else
-	{
-		numOfTry++;
-		if (numOfTry==3){
-			startRound();
-		}
-		else
-			document.getElementById("ans").value =''; 
-			showData();
-	}
-}
 
-*/
  //-----------------Functions----------------------
 
 
