@@ -3,36 +3,9 @@ import ReactDOM from 'react-dom';
 import './App.css';
 
 
-//--------------------Components-----------------
-export default class App extends Component {
-  render() {
-  	if (this.props.numOfRound===0){
-	   		return (
-			<div id="App">
-				<div id = "startBox">
-				<h1>Guess by album!</h1>
-				<p className="startBoxp"> 
-				The game has 5 rounds.<br />
-				 At each round 3 album’s names are shown and you <br />
-				 have 3 attempts to guess the exact full name of the artist<br />
-				 If you succeeds on the 1st attempt -> you get 5 points.<br />
-				 If you succeeds on the 2nd attempt -> you get 3 points.<br />
-				 If you succeeds on the 3rd attempt -> you get 1 point.<br />
-				</p>
-				<button className="startBoxbutton" onClick={onClickStart}>Click to start </button>
-			</div>
-		</div>
-	    );
-  	}
-  	else {
-		readData(1);
-		return (<div id="App"></div>);//
-  	}
-  }
-}
+//--------------------Component-----------------
 
-
-class Ans extends React.Component {
+export default  class App extends Component {
   constructor() {
     super() 
     this.state = {
@@ -64,8 +37,30 @@ class Ans extends React.Component {
 }
 
   render() {
-  	if (this.props.numOfRound < 6){
-  		var ans1 = <p className="ans"> {this.props.ans[1]}</p>;
+  	  	if (this.props.numOfRound===0){
+	   		return (
+			<div id="App">
+				<div id = "startBox">
+				<h1>Guess by album!</h1>
+				<p className="startBoxp"> 
+				The game has 5 rounds.<br />
+				 At each round 3 album’s names are shown and you <br />
+				 have 3 attempts to guess the exact full name of the artist<br />
+				 If you succeeds on the 1st attempt -> you get 5 points.<br />
+				 If you succeeds on the 2nd attempt -> you get 3 points.<br />
+				 If you succeeds on the 3rd attempt -> you get 1 point.<br />
+				</p>
+				<button className="startBoxbutton" onClick={onClickStart}>Click to start </button>
+			</div>
+		</div>
+	    );
+  	}
+  	else if (this.props.numOfRound === 1 && this.props.first===1 ){
+		readData(1);
+		return <div></div>; //
+  	}
+  	else if (this.props.numOfRound < 6){
+	    var ans1 = <p className="ans"> {this.props.ans[1]}</p>;
   		var ans2 = 
 	  	<div>
 			{ans1}
@@ -84,11 +79,12 @@ class Ans extends React.Component {
 			</div>
 	    );
 	}//
+
 	else if (this.props.numOfRound===6) {
   		return(	    	
   			<div id="startBox">	
   			<h1>Game Over!</h1>
-  			<h3 id="Endh3">Final score is : {this.state.score}</h3>
+  			<h3 id="Endh3"> score is : {this.state.score}</h3>
 			<button className="startBoxbutton" onClick={onClickStart}>Click to start </button>
 
   			</div>);//
@@ -98,12 +94,10 @@ class Ans extends React.Component {
 }
 
 
-//--------------------Components-----------------
-
+//-----------------Functions----------------------
 
 
 var  chosenArtist = [5];
- //-----------------Functions----------------------
 //get random artist from an array
 export function randomArtist(){
 	var  artists = ["U2", "Coldplay", "Queen", "Led Zeppelin", "Arctic monkeys", "Red Hot Chili Peppers", "Britney Spears", "Madonna","Michael Jackson", "Sia", "The Doors", "Metallica","Shakira","Katy Perry","Taylor swift", "Adele","Aerosmith","Guns N Roses","The Beatles","Elvis Presley "];
@@ -133,7 +127,7 @@ function getUrl(i){
 }
 
 function onClickStart(){
-	return ReactDOM.render(<App  numOfRound={1} />, document.getElementById('root'));//
+	return ReactDOM.render(<App  numOfRound={1} first={1} />, document.getElementById('root'));//
 
 }
 
@@ -156,12 +150,12 @@ if (numOfRound<6){
   		}
   		i+=1;
   	}
-		ReactDOM.render(<Ans numOfRound={numOfRound}   ans={answer} />, document.getElementById('root'));//
+		ReactDOM.render(<App numOfRound={numOfRound}   ans={answer} first={0}/>, document.getElementById('root'));//
 		numOfRound+=1;
 		return;  });
 }
 else
-		ReactDOM.render(<Ans numOfRound={numOfRound}/>, document.getElementById('root'));//
+		ReactDOM.render(<App numOfRound={numOfRound}/>, document.getElementById('root'));//
 
 }
 
@@ -181,7 +175,6 @@ function updateScore(numOfTry){
 	}
 }
 
- //-----------------Functions----------------------
 
 
 
