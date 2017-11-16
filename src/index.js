@@ -7,5 +7,5 @@ import * as fun from './App';
 
 
 var artists=fun.randomArtist();
-ReactDOM.render(<App   artist={artists} numOfRound={0}/>, document.getElementById('root'));
+ReactDOM.render(<App   artist={artists} first={1}/>, document.getElementById('root'));
 registerServiceWorker();
